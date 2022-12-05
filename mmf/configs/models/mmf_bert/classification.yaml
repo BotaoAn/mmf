@@ -1,5 +1,5 @@
 model_config:
-  mmbt:
+  mmf_bert:
     training_head_type: classification
     num_labels: 2
     losses:
