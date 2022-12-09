@@ -164,7 +164,7 @@ class MLPClassifer(nn.Module):
         self.layers = nn.ModuleList()
 
         if hidden_dim is None:
-            hidden_dim = in_dim
+            hidden_dim = int(in_dim/2)
 
         for _ in range(num_layers):
             self.layers.append(nn.Linear(in_dim, hidden_dim))
@@ -173,6 +173,7 @@ class MLPClassifer(nn.Module):
             self.layers.append(activation())
             self.layers.append(nn.Dropout(dropout))
             in_dim = hidden_dim
+            hidden_dim = int(hidden_dim/2)
 
         self.layers.append(nn.Linear(in_dim, out_dim))
 
